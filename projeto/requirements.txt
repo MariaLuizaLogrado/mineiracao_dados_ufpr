@@ -1,3 +1,4 @@
+pywin32;sys_platform == 'win32'
 altair==5.4.1
 aspose-zip==24.9.0
 asttokens==2.4.1
