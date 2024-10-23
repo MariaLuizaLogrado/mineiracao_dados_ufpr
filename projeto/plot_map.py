@@ -1,20 +1,37 @@
 import streamlit as st
 import plotly.express as px
-def plot_map(ano_selecionado, continente_selecionado, df, limites_continentes):
+
+
+def plot_map(ano_selecionado, continente_selecionado, variavel_selecionada, df, limites_continentes, tipo_projecao='natural earth'):
+    '''
+    Função para plotar um mapa interativo com Plotly Express.
+    
+    Args:
+        ano_selecionado (int): Ano selecionado pelo usuário.
+        continente_selecionado (str): Continente selecionado pelo usuário.
+        df (pd.DataFrame): DataFrame com os dados.
+        limites_continentes (dict): Dicionário com os limites geográficos aproximados para os continentes.
+
+    Returns:
+        Plotly Express Map: Mapa interativo.
+    '''
+
     # Filtra o DataFrame pelo ano
     df_filtrado = df[df['ano'] == ano_selecionado]
+
+    legenda = variavel_selecionada.replace('_', ' ').title() # Ajusta a legenda
     
     # Criando o mapa com Plotly
     fig = px.choropleth(df_filtrado, 
                         locations='pais',  
                         locationmode='country names',  
-                        color='relato_sarampo',  
+                        color=variavel_selecionada,  
                         hover_name='pais',  
-                        color_continuous_scale='blugrn',  # paleta de cores disponíveis: 'emrld', 'blugrn', 'teal', 'agsunset', 'sunset', 'solar', 'ice', 'gray', 'hot', 'curl'
-                        title=f'Relatos de Sarampo por País em {ano_selecionado} - {continente_selecionado}')
+                        color_continuous_scale='blues',
+                        title=f'{legenda} por País em {ano_selecionado} - {continente_selecionado}')
 
     # Ajustando o tamanho do mapa
-    fig.update_layout(width=1200, height=900)
+    fig.update_layout(width=1800, height=700)
 
     # Se o usuário selecionar um continente específico
     if continente_selecionado != 'Mapa Global':
@@ -30,7 +47,7 @@ def plot_map(ano_selecionado, continente_selecionado, df, limites_continentes):
         )
     else:
         # Se "Mapa Global" for selecionado, restaura o mapa global
-        fig.update_geos(projection_type='natural earth')
+        fig.update_geos(projection_type=tipo_projecao)
 
     # Exibir o gráfico na página
     st.plotly_chart(fig)
