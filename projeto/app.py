@@ -3,6 +3,8 @@ import pandas as pd
 
 from plot_map import plot_map
 
+# Defina o título da página e o ícone
+
 # Defina o ícone como um emoji
 st.set_page_config(
     page_title="Relatos de Sarampo",  # Título da página
