@@ -1,7 +1,6 @@
 import streamlit as st
 import plotly.express as px
 
-
 def plot_map(ano_selecionado, continente_selecionado, variavel_selecionada, df, limites_continentes, tipo_projecao='natural earth'):
     '''
     Função para plotar um mapa interativo com Plotly Express.

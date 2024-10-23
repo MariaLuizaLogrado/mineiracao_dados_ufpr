@@ -3,9 +3,7 @@ import pandas as pd
 
 from plot_map import plot_map
 
-# Defina o título da página e o ícone
-
-# Defina o ícone como um emoji
+# Defina o nome da página e o layout
 st.set_page_config(
     page_title="Visualização Dados OMS",  # Título da página
     page_icon="🌐",  # Ícone de mundo disponível
