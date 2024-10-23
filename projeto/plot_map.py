@@ -1,7 +1,7 @@
 import streamlit as st
 import plotly.express as px
 
-def plot_map(ano_selecionado, continente_selecionado, variavel_selecionada, df, limites_continentes, tipo_projecao='natural earth'):
+def plot_map(ano_selecionado, continente_selecionado, variavel_selecionada, df, limites_continentes, tipo_projecao):
     '''
     Função para plotar um mapa interativo com Plotly Express.
     
@@ -38,11 +38,9 @@ def plot_map(ano_selecionado, continente_selecionado, variavel_selecionada, df, 
         limites = limites_continentes[continente_selecionado]
         fig.update_geos(
             projection_scale=1,  # Tamanho padrão do zoom (ajustável)
-            center=dict(lat=(limites['lat'][0] + limites['lat'][1]) / 2, 
-                        lon=(limites['lon'][0] + limites['lon'][1]) / 2),
             lonaxis_range=limites['lon'],  # Definindo o intervalo de longitude
             lataxis_range=limites['lat'],  # Definindo o intervalo de latitude
-            visible=True
+            visible=True # Torna o mapa visível
         )
     else:
         # Se "Mapa Global" for selecionado, restaura o mapa global
