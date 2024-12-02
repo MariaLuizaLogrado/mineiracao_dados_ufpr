@@ -22,10 +22,13 @@ with col1:
 
 # Na segunda coluna, exibe a logo
 with col2:
-    st.image('logo_oms.jfif', width=350)
+    st.image('https://www.rushu.rush.edu/sites/default/files/Research/worldhealthorg-who-logo.jpg', width=200)
 
 # Carregando o arquivo CSV
-df = pd.read_csv('expectativa_vida.csv')
+
+url = "https://raw.githubusercontent.com/MariaLuizaLogrado/mineiracao_dados_ufpr/main/projeto/expectativa_vida.csv"
+df = pd.read_csv(url)
+
 mydf = df[['pais', 'ano', 'continente', 'relato_sarampo', 'expectativa_vida', 'consumo_alcool', 'mortalidade_adulta']]
 
 # Dicionário com limites geográficos aproximados para os continentes
