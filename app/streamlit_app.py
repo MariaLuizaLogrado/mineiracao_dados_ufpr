@@ -1,18 +1,3 @@
-# import streamlit as st
-
-# pages = {
-#     "Portuguese": [
-#         st.Page("pt_ocr.py", title="Portuguese OCR"),
-#     ],
-#     "English": [
-#         st.Page("en_ocr.py", title="English OCR"),
-#     ],
-# }
-
-# pg = st.navigation(pages)
-# pg.run()
-
-
 import streamlit as st 
 from PIL import Image
 

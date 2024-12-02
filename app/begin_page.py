@@ -11,8 +11,8 @@ st.write("##### Selecione uma bandeira - Select a flag")
 ct1, ct2 = st.columns(2)
 
 # Caminhos para imagens
-br_logo_path = "config/br.png"
-us_logo_path = "config/us.png"
+br_logo_path = "./config/br.png"
+us_logo_path = "./config/us.png"
 
 # Geração das imagens em Base64
 br_logo_bytes = image_to_bytes(br_logo_path)
