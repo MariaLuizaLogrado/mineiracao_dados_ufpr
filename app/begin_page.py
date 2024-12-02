@@ -1,40 +1,28 @@
-import streamlit as st
+import streamlit as st 
 from PIL import Image
-from utils import image_to_bytes
 
 
-# Cabeçalho e descrição
+# image = Image.open("config/logo.png")
+# st.image(image, width=250)
+
 st.header("EasyOCR - Detecção de Texto - Text Detection")
+
 st.write("##### Selecione uma bandeira - Select a flag")
 
-# Divisão em colunas
-ct1, ct2 = st.columns(2)
+ct = st.container()
 
-# Caminhos para imagens
-br_logo_path = "./config/br.png"
-us_logo_path = "./config/us.png"
+ct1, ct2 = ct.columns(2)
 
-# Geração das imagens em Base64
-br_logo_bytes = image_to_bytes(br_logo_path)
-us_logo_bytes = image_to_bytes(us_logo_path)
+comprador_button = ct1.button("Brasil", use_container_width=True)
+comprador_logo = Image.open("./config/br.png")
+ct1.image(comprador_logo, width=500)
 
-# Criação dos "botões" com HTML personalizado
-with ct1:
-    st.markdown(
-        f"""
-        <a href="/pt_ocr" target="_self">
-            <img src="data:image/png;base64,{br_logo_bytes}" style="width:100%;cursor:pointer;">
-        </a>
-        """,
-        unsafe_allow_html=True,
-    )
+coord_buton = ct2.button("United States", use_container_width = True)
+coord_logo = Image.open("./config/us.png")
+ct2.image(coord_logo, width=500)
 
-with ct2:
-    st.markdown(
-        f"""
-        <a href="/en_ocr" target="_self">
-            <img src="data:image/png;base64,{us_logo_bytes}" style="width:100%;cursor:pointer;">
-        </a>
-        """,
-        unsafe_allow_html=True,
-    )
+if comprador_button:
+    st.switch_page("pt_ocr.py")
+
+if coord_buton:
+    st.switch_page("en_ocr.py")

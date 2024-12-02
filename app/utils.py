@@ -1,11 +1,5 @@
 import streamlit as st
-import base64
 import os
-
-def image_to_bytes(image_path):
-    '''Converte uma imagem em Base64.'''
-    with open(image_path, "rb") as img_file:
-        return base64.b64encode(img_file.read()).decode("utf-8")
 
 def load_image(uploaded_file):
     """Carrega a imagem enviada pelo usuário."""
