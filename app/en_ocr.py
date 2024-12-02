@@ -33,7 +33,3 @@ if uploaded_file is not None:
 
         # Prepara botão de download
         prepare_download_button(file_path, uploaded_file.name)
-
-        # Remove o arquivo após o download
-        remove_file(file_path)
-
